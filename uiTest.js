@@ -8,18 +8,13 @@ var driver =  // new webdriver.Builder().build();
         .build();
 var By = webdriver.By;
 
-// Start s
-test.describe('Google Search', function() {
-    test.it('should work', function() {
-        driver.get("http://www.google.com");
-        driver.findElement(By.name("q")).sendKeys("webdriver");
-        driver.findElement(By.name("btnG")).click();
-        debugger;
-        driver.getTitle().then(function(title) {
-             console.log(title);
-             assert.equal("webdriver - Google Search", title);
-        });
 
+
+// Start s
+test.describe('Sqor', function() {
+    test.it('should work', function() {
+        driver.get("http://www.sqor.com");
+        driver.findElement(By.className("dropdown") ).click();
     });
 });
 
