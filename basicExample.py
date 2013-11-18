@@ -12,12 +12,46 @@ try:
     link = driver.find_element_by_css_selector(".dropdown");
     link.click()
 
+    time.sleep(1)
     links = link.find_elements_by_tag_name("a")
     links[2].click()
 
+    '''
     WebDriverWait(driver, 10).until(EC.title_contains("NBA"))
     teamLink = driver.find_elements_by_css_selector(".team-list-entry")
     teamLink[0].click()
+    '''
+    time.sleep(2)
+
+
+    # Loop
+    link = driver.find_element_by_css_selector(".dropdown");
+    link.click()
+    time.sleep(2)
+    links = link.find_elements_by_tag_name("a")
+    links[3].click()
+    time.sleep(2)
+
+
+    # Loop
+    link = driver.find_element_by_css_selector(".dropdown");
+    link.click()
+    time.sleep(1)
+    links = link.find_elements_by_tag_name("a")
+    links[1].click()
+
+
+
+
+    # Loop
+    link = driver.find_element_by_css_selector(".dropdown");
+    link.click()
+    time.sleep(2)
+    links = link.find_elements_by_tag_name("a")
+    links[4].click()
+    time.sleep(2)
+    driver.back()
+    time.sleep(2)
 
 
 except (RuntimeError, ValueError, NameError):
