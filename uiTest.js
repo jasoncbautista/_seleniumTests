@@ -13,12 +13,26 @@ var By = webdriver.By;
 // Start s
 test.describe('Sqor', function() {
     test.it('should work', function() {
-        driver.get("http://www.sqor.com");
+        driver.get("http://sqorweb.local/");
         var menu = driver.findElement(By.className("dropdown") );
         setTimeout(function() {
 
             menu.click();
-        }, 2000);
+            clickSubMenuLink();
+        }, 1000);
+
+
+        var clickSubMenuLink = function(sport) {
+
+            setTimeout(function() {
+                // alert("hi");
+
+                var itemMenu= driver.findElements(By.cssSelector("dropdown a") );
+                itemMenu[0].click();
+
+            }, 50);
+
+        };
         // var links = menu.findElement(By.tagName("a") );
         // links.click()
 
