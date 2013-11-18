@@ -16,6 +16,17 @@ try:
     links = link.find_elements_by_tag_name("a")
     links[2].click()
 
+    time.sleep(2)
+    driver.get('http://sqorweb.local/team/551/nba/los-angeles-lakers')
+
+    time.sleep(2)
+    links = driver.find_elements_by_tag_name("a")
+    time.sleep(2)
+    links[15].click()
+    driver.back()
+    time.sleep(4)
+
+
     '''
     WebDriverWait(driver, 10).until(EC.title_contains("NBA"))
     teamLink = driver.find_elements_by_css_selector(".team-list-entry")
@@ -31,6 +42,7 @@ try:
     links = link.find_elements_by_tag_name("a")
     links[3].click()
     time.sleep(2)
+
 
 
     # Loop
