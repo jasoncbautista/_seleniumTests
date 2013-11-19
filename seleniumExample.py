@@ -11,19 +11,21 @@ class Selenium2OnSauce(unittest.TestCase):
         desired_capabilities['platform'] = 'MAC'
         desired_capabilities['name'] = 'Testing Selenium 2 in Python at Sauce'
 
-        #
-        shouldRunLocal =  os.environ.get("randomrandomrandomwfdsf342342", "local")
-
-
-        if (shouldRunLocal == "local"):
-            print "Running locally"
-            self.driver = webdriver.Chrome()
-        else:
+        shouldRunLocal =  os.environ.get("SAUCE_SERVER", "local")
+        sauceKey = os.environ.get("SAUCE_KEY", "")
+        print sauceKey
+        sauceUrl = "http://sqordev:" + sauceKey + "@ondemand.saucelabs.com:80/wd/hub"
+        print sauceUrl
+        if (shouldRunLocal.lower() == "remote"):
             print "Running remotely"
             self.driver = webdriver.Remote(
                 desired_capabilities=desired_capabilities,
-                command_executor="http://sqordev:d9c8fd8c-296b-4f71-997b-6a33bc80c483@ondemand.saucelabs.com:80/wd/hub"
+                command_executor=sauceUrl
             )
+        else:
+            print "Running locally. To run remotely set env variable: $ export SAUCE_SERVER=REMOTE"
+            self.driver = webdriver.Chrome()
+
         self.driver.implicitly_wait(30)
 
     def test_sauce(self):
